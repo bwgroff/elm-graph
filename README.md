@@ -1,1 +1,1 @@
-# elm-graph
+# indigo - INDuctive Graphs for elm
