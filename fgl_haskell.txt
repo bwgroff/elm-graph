@@ -1,0 +1,25 @@
+dfs in Haskell:
+
+dfs :: Graph.Node -> Gr a b -> [Node]
+dfs start graph = go [start] graph
+  where go [] _                            = []
+        go _ g | Graph.isEmpty g           = []
+        go (n:ns) (match n -> (Just c, g)) =
+          n : go (Graph.neighbors' c ++ ns) g
+        go (_:ns)                          = go ns g
+
+Breakdown:
+(Base Case) Given either empty node list or empty graph, return [].
+(Induction) Given nodes and a graph, check if next node is in the remaining graph. If so, append.
+(Induction) If next node is not in the graph, skip it and try again.
+
+
+bfs in Haskell:
+
+bfs :: Graph.Node -> Gr a b -> [Node]
+bfs start graph = go [start] graph
+  where go [] _                            = []
+        go _ g | Graph.isEmpty g           = []
+        go (n:ns) (match n -> (Just c, g)) =
+          n : go (Graph.neighbors' c ++ ns) g
+        go (_:ns)                          = go ns g
